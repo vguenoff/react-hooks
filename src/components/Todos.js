@@ -7,42 +7,50 @@ import React, { useState } from 'react';
     2. The user can remove todo items
 */
 
+const generateId = () =>
+    `_${Math.random()
+        .toString(36)
+        .substr(2, 9)}`;
+
 function Todos() {
-    const [todo, updateTodo] = useState('');
-    const [todos, editTodos] = useState(['hey', 'hoo']);
+    const [input, setInput] = useState('');
+    const [todos, setTodos] = useState([]);
 
     const addTodo = e => {
         e.preventDefault();
 
-        if (todo) {
-            editTodos(todos => [...todos, todo]);
-            updateTodo('');
+        if (input) {
+            setTodos(todos => [
+                ...todos,
+                {
+                    value: input,
+                    id: generateId(),
+                },
+            ]);
+
+            setInput('');
         }
     };
 
-    const removeTodo = i =>
-        editTodos(todos => [
-            ...todos.slice(0, i),
-            ...todos.slice(i + 1, todos.length),
-        ]);
+    const removeTodo = id =>
+        setTodos(todos => todos.filter(todo => todo.id !== id));
 
     return (
         <div>
             <ol>
-                {todos.map((t, i) => (
-                    <li key={i}>
-                        {t}{' '}
-                        <span>
-                            <button onClick={() => removeTodo(i)}>x</button>
-                        </span>
+                {todos.map(todo => (
+                    <li key={todo.id}>
+                        {todo.value}{' '}
+                        <button onClick={() => removeTodo(todo.id)}>x</button>
                     </li>
                 ))}
             </ol>
             <form onSubmit={addTodo}>
                 <input
                     type="text"
-                    value={todo}
-                    onChange={e => updateTodo(e.target.value)}
+                    value={input}
+                    onChange={e => setInput(e.target.value)}
+                    placeholder="Add todo"
                 />
                 <button>Add todo</button>
             </form>
