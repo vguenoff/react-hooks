@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import { string } from 'prop-types';
+import React, { Component } from './node_modules/react';
+import { string } from './node_modules/prop-types';
 
-import fetchUser from 'twitter';
+import fetchUser from './node_modules/twitter';
 // fetchUser take in a username returns a promise
 // which will resolve with that username's data.
 
