@@ -1,10 +1,13 @@
 import React from 'react';
 import './App.css';
 
+import Todos from './components/Todos';
+
 const App = () => {
     return (
         <div className="main-wrapper">
-            <h1>Level Up Dishes</h1>
+            <h1>Practice</h1>
+            <Todos />
         </div>
     );
 };
