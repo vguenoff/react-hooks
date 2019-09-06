@@ -3,12 +3,15 @@ import './App.css';
 
 import Todos from './components/Todos';
 import ShowHide from './components/ShowHide';
+import CharacterLimit from './components/CharacterLimit';
+import WaitDelay from './components/WaitDelay';
+import APIRequests from './components/APIRequests';
 
 const App = () => {
     return (
         <div className="main-wrapper">
             <h1>Practice</h1>
-            <Todos />
+            {/* <Todos />
             <ShowHide
                 posts={[
                     {
@@ -33,7 +36,14 @@ const App = () => {
                             'I’ve taught JavaScript for a long time to a lot of people. Consistently the most commonly under-learned aspect of the language is the module system. There’s good reason for that. Modules in JavaScript have a strange and erratic history. In this post we’ll walk through that history and you’ll learn modules of the past to better understand how JavaScript modules work today.',
                     },
                 ]}
+            /> */}
+            {/* <CharacterLimit /> */}
+            <WaitDelay
+                delay={3000}
+                placeholder={<p>Waiting...</p>}
+                ui={<p>This text should appear after 3 seconds.</p>}
             />
+            <APIRequests />
         </div>
     );
 };

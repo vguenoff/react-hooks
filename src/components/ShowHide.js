@@ -9,27 +9,29 @@ import './ShowHide.css';
 */
 
 const ShowHide = ({ posts }) => {
-    const [openId, setOpenId] = useState(0);
+    const [openIndex, setOpenIndex] = useState(0);
 
     return (
         <div className="show-hide">
             <ul>
-                {posts.map(post => {
-                    const match = post.id === openId;
+                {posts.map(({ id, img, text }, index) => {
+                    const isOpen = openIndex === index;
+
+                    const textToShow = isOpen
+                        ? text
+                        : `${text.substring(0, 100)}...`;
 
                     return (
                         <li
-                            key={post.id}
-                            style={match ? { border: '1px solid black' } : null}
+                            key={id}
+                            style={{
+                                border: isOpen ? '1px solid black' : 'none',
+                            }}
                         >
-                            <img src={post.img} alt="" />
-                            <p>
-                                {match
-                                    ? post.text
-                                    : `${post.text.substring(0, 100)}...`}
-                            </p>
-                            {!match && (
-                                <button onClick={() => setOpenId(post.id)}>
+                            <img src={img} alt="" />
+                            <p>{textToShow}</p>
+                            {!isOpen && (
+                                <button onClick={() => setOpenIndex(index)}>
                                     Open
                                 </button>
                             )}
