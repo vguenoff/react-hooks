@@ -6,6 +6,9 @@ import ShowHide from './components/ShowHide';
 import CharacterLimit from './components/CharacterLimit';
 import WaitDelay from './components/WaitDelay';
 import APIRequests from './components/APIRequests';
+import Wait from './components/Wait';
+import WindowDimensions from './components/WindowDimensions';
+import APIRequestsPractice from './components/APIRequestsPractice';
 
 const App = () => {
     return (
@@ -38,12 +41,19 @@ const App = () => {
                 ]}
             /> */}
             {/* <CharacterLimit /> */}
-            <WaitDelay
+            {/* <WaitDelay
                 delay={3000}
                 placeholder={<p>Waiting...</p>}
                 ui={<p>This text should appear after 3 seconds.</p>}
-            />
-            <APIRequests />
+            /> */}
+            {/* <APIRequests /> */}
+            {/* <Wait
+                delay={3000}
+                placeholder={<p>Waiting...</p>}
+                ui={<p>This text should appear after 3 seconds.</p>}
+            /> */}
+            {/* <WindowDimensions /> */}
+            <APIRequestsPractice />
         </div>
     );
 };
